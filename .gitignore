@@ -4,3 +4,4 @@ venv/
 gunicorn.service
 nginx
 docker-compose-prod.yml
+Procfile
