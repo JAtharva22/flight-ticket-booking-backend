@@ -3,3 +3,4 @@ venv/
 .env
 gunicorn.service
 nginx
+docker-compose-prod.yml
