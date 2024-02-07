@@ -2,7 +2,8 @@
 video :-
 https://www.youtube.com/watch?v=gMlcA1oTVV4
 
-###![er](https://github.com/JAtharva22/flight-ticket-booking-backend/assets/93152317/932479ec-f6f4-4b77-a1c8-ba77758f600f)
+#### ER Schema
+![er](https://github.com/JAtharva22/flight-ticket-booking-backend/assets/93152317/932479ec-f6f4-4b77-a1c8-ba77758f600f)
 
 
 #### This API  has 4 routes
