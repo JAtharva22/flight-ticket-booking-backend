@@ -1,7 +1,3 @@
 __pycache__
 venv/
 .env
-gunicorn.service
-nginx
-docker-compose-prod.yml
-Procfile
