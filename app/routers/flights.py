@@ -5,7 +5,6 @@ from sqlalchemy.orm import Session
 from datetime import datetime, time, timedelta
 
 from sqlalchemy import func
-# from sqlalchemy.sql.functions import func
 from .. import models, schemas, oauth2
 from ..database import get_db
 
@@ -21,7 +20,6 @@ router = APIRouter(
 def get_flights(
     db: Session = Depends(get_db),
     current_user = Depends(oauth2.get_current_user),
-    # date: Optional[datetime] = None,
     start_time: Optional[datetime] = None,
     end_time: Optional[datetime] = None,
     departure_airport: Optional[str] = None,
@@ -29,7 +27,6 @@ def get_flights(
 ):
     try:
         query = db.query(models.Flight)
-        print(start_time, end_time)
 
         if start_time and end_time:
             query = query.filter(models.Flight.departure_datetime.between(start_time, end_time))
@@ -115,7 +112,6 @@ def create_flight(
                 detail="Not authorized to create. Login with admin."
             )
 
-        # Create a new flight using the provided data
         new_flight = models.Flight(**flight_data.dict())
         
         db.add(new_flight)
@@ -130,10 +126,11 @@ def create_flight(
             detail=f"An error occurred while fetching flights: {str(e)}"
         )
 
+
 # def to delete flight and respective booking along it
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_flight(
-    id: str,  # Change the parameter type to str since flight_number is a string
+    id: str, 
     db: Session = Depends(get_db),
     current_user=Depends(oauth2.get_current_admin)
 ):
@@ -144,7 +141,6 @@ def delete_flight(
                 detail="Not authorized to delete. Login with admin."
             )
 
-        # Find the flight by its flight_number
         flight = db.query(models.Flight).filter(models.Flight.flight_number == id).first()
 
         if flight is None:
@@ -152,13 +148,10 @@ def delete_flight(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail=f"Flight with id: {id} does not exist."
             )
-
-        # Delete the flight
         db.delete(flight)
         db.commit()
 
     except Exception as e:
-        # Rollback changes in case of an error
         db.rollback()
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
