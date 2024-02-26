@@ -28,7 +28,8 @@ def book_flight(
                 detail="No available seats on this flight."
             )
 
-        seat_number = 60 - flight.available_seats + 1
+        seats = flight.available_seats
+        seat_number = seats - 1
 
         new_booking = models.Booking(
             user_id=current_user.id,
@@ -62,7 +63,7 @@ def get_user_bookings(
 ):
     try:
         flight_alias = aliased(models.Flight)
-        # Use join and add_columns for a full outer join
+        # Use join and add_columns for a outer join
         bookings = db.query(models.Booking, flight_alias).outerjoin(
             flight_alias, models.Booking.flight_id == flight_alias.id).filter(
                 models.Booking.user_id == current_user.id).all()

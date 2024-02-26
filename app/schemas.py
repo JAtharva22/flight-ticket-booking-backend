@@ -26,6 +26,7 @@ class FlightResponse(BaseModel):
 
     class Config:
         orm_mode = True
+
 # ====================================
 
 class UserOut(BaseModel):
@@ -54,7 +55,6 @@ class AdminLogin(BaseModel):
     role: str
     password: str
 
-
 # ==============================================
 
 class Token(BaseModel):
@@ -69,8 +69,8 @@ class UserToken(Token):
 class TokenData(BaseModel):
     id: Optional[str] = None
 
-
 # =================================================
+
 class BookingResponse(BaseModel):
     id: int
     user_id: int
@@ -87,5 +87,3 @@ class BookingWithFlightResponse(BookingResponse):
     destination_airport: Optional[str]
     departure_datetime: Optional[datetime]
     available_seats: Optional[int]
-
-    

@@ -1,6 +1,15 @@
 # Backend of Flight Ticket Booking System
-video :-
-https://www.youtube.com/watch?v=gMlcA1oTVV4
+
+## Flight Ticket Booking System
+#### (Python, FastAPI, PostgreSQL, AWS, Docker) 
+### ● Developed a backend web application using Python and FastAPI, allowing users to search and book flight tickets as well as fetch all their ticket bookings.
+### ● Also created a separate admin login to create, view and delete the flights and view all the bookings.
+### ● Implemented a secure sign up and login for users and admins using JWT and hashing of passwords in DB.
+### ● Hoisted the database on AWS RDS and dockerized the web application.
+
+##### video :-https://www.youtube.com/watch?v=gMlcA1oTVV4
+##### deploy :- https://flight-booking-backend-fastapi.onrender.com/docs
+
 
 #### ER Schema
 ![er](https://github.com/JAtharva22/flight-ticket-booking-backend/assets/93152317/932479ec-f6f4-4b77-a1c8-ba77758f600f)
